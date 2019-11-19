@@ -32,7 +32,7 @@
        document.reg.act.focus();
     }
 
-    function checkScore() {
+    function checkScore(field) {
        if(field.value == 0 || field.value == 1 || field.value == 2) {
           var A = eval(document.reg.act.value);
           var P = eval(document.reg.pulse.value);
@@ -42,12 +42,22 @@
           document.reg.total.value = A + P + G + AP + R;
        }
        else {
-          document.
+          field.value = prompt("Only a Value of 0-2", "Value");
        }
     }
 
+    function checkBox() {
+       if (!reg.consent.checked) {
+          alert("Parental Consent is Required");
+          reg.consent.focus();
+          return false;
+       }
+       return true;
+
+    }
+
 </script>
-<form name="reg" action="">
+<form name="reg" action="" onsubmit="checkBox(this);">
 <center>
 <img src="Logo.gif" width="450" height="75" alt="St. Marys of Northland Pines" />
 
@@ -134,7 +144,7 @@
       Activity
    </td>
    <td>
-      <input name="act" value="0" size="1" maxlength="1" />
+      <input name="act" value="0" size="1" maxlength="1" onblur="checkScore(this);" />
    </td>
 </tr>
 
@@ -144,7 +154,7 @@
       Pulse
    </td>
    <td>
-      <input name="pulse" value="0" size="1" maxlength="1" />
+      <input name="pulse" value="0" size="1" maxlength="1" onblur="checkScore(this);" />
    </td>
 </tr>
 
@@ -153,7 +163,7 @@
       Grimace (Reflex, Irritability)
    </td>
    <td>
-      <input name="grimace" value="0" size="1" maxlength="1" />
+      <input name="grimace" value="0" size="1" maxlength="1" onblur="checkScore(this);" />
    </td>
 </tr>
 
@@ -163,7 +173,7 @@
       Appearance (Skin Color)
    </td>
    <td>
-      <input name="app" value="0" size="1" maxlength="1" />
+      <input name="app" value="0" size="1" maxlength="1" onblur="checkScore(this);"/>
    </td>
 </tr>
 
@@ -173,7 +183,7 @@
       Respiration
    </td>
    <td>
-      <input name="resp" value="0" size="1" maxlength="1" />
+      <input name="resp" value="0" size="1" maxlength="1" onblur="checkScore(this);"  />
    </td>
 </tr>
 
